@@ -3,7 +3,7 @@ About
 
 An emacs 24 (deftheme) color theme. It's super nice! This version is a fork of [subatomic-theme.el](https://github.com/cryon/subatomic) with the colors adjusted to work in a 256 color terminal.
 
-![subatomic256.el - kind of nice, eh?](https://raw.github.com/d11wtq/subatomic/master/readme-files/subatomic.png "subatomic256 emacs theme")
+![subatomic256.el - kind of nice, eh?](https://raw.github.com/d11wtq/subatomic256/master/readme-files/subatomic.png "subatomic256 emacs theme")
 
 Installation
 ============
