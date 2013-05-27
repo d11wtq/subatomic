@@ -1,9 +1,10 @@
-;;; subatomic-theme.el --- Nice looking emacs 24 theme
+;;; subatomic256-theme.el --- Fork of subatomic-theme for terminals.
 
 ;; Copyright 2012 John Olsson
 
 ;; Author: John Olsson <john@cryon.se>
-;; URL: https://github.com/cryon/subatomic
+;; Modified by: Chris Corbyn <chris@w3style.co.uk>
+;; URL: https://github.com/cryon/subatomic256
 ;; Version: 1.2
 
 ;; This file is free software: you can redistribute it and/or modify
@@ -19,24 +20,24 @@
 ;; You should have received a copy of the GNU General Public License
 ;; along with this file.  If not, see <http://www.gnu.org/licenses/>.
 
-(deftheme subatomic
-  "subatomic emacs theme")
+(deftheme subatomic256
+  "subatomic256 emacs theme")
 
-(let ((midnight          "#303347")
-      (midnight-1        "#2e3043")
-      (midnight-2        "#2a2c3e")
-      (midnight-3        "#232533")
-      (mystic-blue       "#696e92")
-      (victory-blue      "#8aa6bc")
-      (victory-blue+1    "#9dbbd3")
-      (jungle-green      "#a9dc69")
-      (undergrowth-green "#81a257")
-      (deep-gold         "#f9b529")
-      (axiomatic-purple  "#9c71a5")
-      (brick-red         "#ea8673")
-      (piggy-pink        "#feccd4")
-      (relaxed-white     "#e5e5e5")
-      (cold-mud          "#cebca5")
+(let ((midnight          "#262626")
+      (midnight-1        "#5f5f87")
+      (midnight-2        "#5f5f87")
+      (midnight-3        "#5f5f87")
+      (mystic-blue       "#5f5f87")
+      (victory-blue      "#87afaf")
+      (victory-blue+1    "#87afd7")
+      (jungle-green      "#afd75f")
+      (undergrowth-green "#87af5f")
+      (deep-gold         "#ffaf00")
+      (axiomatic-purple  "#af5faf")
+      (brick-red         "#d7875f")
+      (piggy-pink        "#ffd7d7")
+      (relaxed-white     "#d7d7d7")
+      (cold-mud          "#d7afaf")
 
       (full-white        "#ffffff")
       (full-black        "#000000")
@@ -47,7 +48,7 @@
       (full-magenta      "#ff00ff")
       (full-cyan         "#00ffff"))
   (custom-theme-set-faces
-   'subatomic
+   'subatomic256
 
    ;; default stuff
 
@@ -588,6 +589,6 @@
    'custom-theme-load-path
    (file-name-as-directory (file-name-directory load-file-name))))
 
-(provide-theme 'subatomic)
+(provide-theme 'subatomic256)
 
-;;; subatomic-theme.el ends here
+;;; subatomic256-theme.el ends here
