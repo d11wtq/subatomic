@@ -5,7 +5,7 @@
 ;; Author: John Olsson <john@cryon.se>
 ;; Modified by: Chris Corbyn <chris@w3style.co.uk>
 ;; URL: https://github.com/cryon/subatomic256
-;; Version: 1.2
+;; Version: 1.3
 
 ;; This file is free software: you can redistribute it and/or modify
 ;; it under the terms of the GNU General Public License as published
@@ -23,7 +23,7 @@
 (deftheme subatomic256
   "subatomic256 emacs theme")
 
-(let ((midnight          "#262626")
+(let ((midnight          "#1c1c1c")
       (midnight-1        "#5f5f87")
       (midnight-2        "#5f5f87")
       (midnight-3        "#5f5f87")
