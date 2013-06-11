@@ -25,7 +25,7 @@
 
 (let ((midnight          "#1c1c1c")
       (midnight-1        "#5f5f87")
-      (midnight-2        "#5f5f87")
+      (midnight-2        "#a8a8a8")
       (midnight-3        "#5f5f87")
       (mystic-blue       "#5f5f87")
       (victory-blue      "#87afaf")
@@ -567,7 +567,7 @@
       ((t (:foreground ,jungle-green :weight bold))))
 
     `(diredp-flag-mark
-      ((t (:bareground ,brick-red :weight bold))))
+      ((t (:foreground ,brick-red :weight bold))))
 
     `(diredp-flag-mark-line
       ((t (:background ,midnight-2))))
