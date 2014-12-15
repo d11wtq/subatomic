@@ -25,7 +25,7 @@
 
 (let ((midnight          "#1c1c1c")
       (midnight-1        "#262626")
-      (midnight-2        "#a8a8a8")
+      (midnight-2        "#434343")
       (midnight-3        "#5f5f87")
       (mystic-blue       "#5f5f87")
       (victory-blue      "#87afaf")
