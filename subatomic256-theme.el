@@ -32,6 +32,7 @@
 
 (defvar subatomic256-palette-file "~/subatomic256.gpl")
 (defvar subatomic256-faces nil)
+(defvar subatomic256-palette nil)
 
 (defmacro let-bindings (bindings &rest body)
   `(let ,(eval bindings) ,@body))
@@ -43,15 +44,21 @@
   (cadr (assq symbol subatomic256-palette)))
 
 (defun subatomic256--resolve-vars (list)
-  (-map
-   (lambda (elt)
-          (cond
-           ((listp elt) (subatomic256--resolve-vars elt))
-           ((symbolp elt)
-            (let ((colour (subatomic256--get-colour elt)))
-              (if colour colour elt)))
-           (t elt)))
-   list))
+  (cond
+   ((not list) nil)
+   ((listp (car list))
+    (cons (subatomic256--resolve-vars (car list))
+          (subatomic256--resolve-vars (cdr list))))
+   ((or (-contains-p '(:foreground :background) (car list))
+        (and (eq ':underline (car list))
+             (not (-contains-p '(t nil) (cadr list)))))
+    (let ((colour (subatomic256--get-colour (cadr list))))
+      (unless colour
+        (message "Invalid colour %s" (cadr list)))
+      `(,(car list) ,colour ,@(subatomic256--resolve-vars (cddr list)))))
+   (t
+    (cons (car list) (subatomic256--resolve-vars (cdr list))))))
+
 
 (defun subatomic256--resolve-faces ()
   (-map
@@ -109,26 +116,40 @@
 
 (defun subatomic256-save-palette ()
   (interactive)
-  (with-temp-buffer
-    (insert "GIMP Palette\n")
-    (insert "Name: subatomic256-256\n")
-    (insert "Columns: 4\n")
-    (insert "#\n")
-    (cl-mapc
-     (lambda (l)
-       (let ((s (symbol-name (car l)))
-             (c (subatomic256-string-colour (cadr l))))
-         (insert (eval `(format "%03d %03d %03d %s\n" ,@c ,s)))))
-     subatomic256-palette)
-    (write-region
-     (point-min) (point-max) subatomic256-palette-file)))
+  (let ((watch-active subatomic256--watch-desc))
+    (subatomic256-watch-palette-stop)
+    (with-temp-buffer
+      (insert "GIMP Palette\n")
+      (insert "Name: subatomic256\n")
+      (insert "Columns: 4\n")
+      (insert "#\n")
+      (cl-mapc
+       (lambda (l)
+         (let ((s (symbol-name (car l)))
+               (c (subatomic256-string-colour (cadr l))))
+           (insert (eval `(format "%03d %03d %03d %s\n" ,@c ,s)))))
+       subatomic256-palette)
+      (write-region
+       (point-min) (point-max) subatomic256-palette-file))
+    (when watch-active
+      (subatomic256-watch-palette))))
+
+(defvar subatomic256--watch-desc nil)
 
 (defun subatomic256-watch-palette ()
   (require 'filenotify)
-  (file-notify-add-watch
-   subatomic256-palette-file
-   '(change)
-   #'subatomic256--watch-callback))
+  (subatomic256-watch-palette-stop)
+  (setq subatomic256--watch-desc
+        (file-notify-add-watch
+         subatomic256-palette-file
+         '(change)
+         #'subatomic256--watch-callback)))
+
+(defun subatomic256-watch-palette-stop ()
+  (require 'filenotify)
+  (when subatomic256--watch-desc
+    (file-notify-rm-watch subatomic256--watch-desc)
+    (setq subatomic256--watch-desc nil)))
 
 (defun subatomic256--watch-callback (event)
   (when (or (eq 'changed (cadr event))
@@ -137,21 +158,21 @@
 
 
 
-(defvar subatomic256-palette
+(setq subatomic256-palette
   '((background-1        "#1c1c1c")
     (background-2        "#262626")
     (background-3        "#444444")
     (background-4        "#6868a8")
-    (foreground-0        "#d7d7d7")
-    (foreground-1        "#d7afaf")
-    (emph-1              "#9292d6")
-    (emph-2              "#87afaf")
+    (foreground-white    "#d7d7d7")
+    (foreground-red      "#d7afaf")
+    (foreground-purple   "#9292d6")
+    (foreground-green    "#87afaf")
+    (emph-1              "#d7875f")
+    (emph-2              "#af5faf")
     (emph-3              "#87afd7")
     (emph-4              "#afd75f")
     (emph-5              "#87af5f")
     (emph-6              "#ffaf00")
-    (emph-7              "#af5faf")
-    (emph-8              "#d7875f")
 
     (full-white        "#ffffff")
     (full-black        "#000000")
@@ -166,9 +187,9 @@
 (setq
  subatomic256-faces
  '((default
-     :background background-1 :foreground foreground-0)
+     :background background-1 :foreground foreground-white)
    (fringe
-    :background midnight)
+    :background background-1)
    (vertical-border
     :foreground background-3)
    (region
@@ -192,7 +213,7 @@
    (powerline-active2
     :background background-2)
    (modeline-inactive
-    :background background-3 :foreground emph-1)
+    :background background-3 :foreground foreground-purple)
    (powerline-inactive1
     :background background-3)
    (powerline-inactive2
@@ -204,38 +225,38 @@
    (highlight-current-line-face
     :inherit hl-line)
    (minibuffer-prompt
-    :foreground emph-7 :weight bold)
+    :foreground emph-2 :weight bold)
    (escape-glyph
-    :foreground foreground-1 :weight bold)
+    :foreground foreground-red :weight bold)
    (link
     :foreground emph-3 :weight bold :underline t)
    ;; font lock
    (font-lock-keyword-face
     :foreground emph-6 :weight bold)
    (font-lock-function-name-face
-    :foreground victory-blue)
+    :foreground emph-3)
    (font-lock-warning-face
-    (:foreground emph-8))
+    (:foreground emph-1))
    (font-lock-builtin-face
     :foreground emph-6)
    (font-lock-variable-name-face
-    :foreground victory-blue)
+    :foreground emph-3)
    (font-lock-constant-face
     :foreground full-white :weight bold :italic t)
    (font-lock-type-face
     :foreground emph-3 :weight bold)
    (font-lock-negation-char-face
-    :foreground emph-8 :weight bold)
+    :foreground emph-1 :weight bold)
    (font-lock-preprocessor-face
-    :foreground foreground-1)
+    :foreground foreground-red)
    (font-lock-comment-face
-    :foreground emph-1)
+    :foreground foreground-purple)
    (font-lock-string-face
     :foreground emph-4)
    (font-lock-comment-delimiter-face
     :foreground background-4)
    (font-lock-doc-face
-    :foreground emph-7 :italic t)
+    :foreground emph-2 :italic t)
    ;; flymake
    (flymake-errline
     :underline full-red)
@@ -247,7 +268,7 @@
    (eshell-ls-executable
     :foreground emph-4)
    (eshell-ls-directory
-    :foreground emph-2 :bold t)
+    :foreground foreground-green :bold t)
    (eshell-ls-archive
     :foreground emph-6)
    (eshell-ls-backup
@@ -261,27 +282,27 @@
    (eshell-prompt
     :inherit minibuffer-prompt)
    (eshell-ls-backup
-    :foreground emph-8 :slant italic)
+    :foreground emph-1 :slant italic)
    (eshell-ls-product
     :inherit default :weight bold)
    (eshell-ls-readonly
     :inherit font-lock-comment)
    (eshell-ls-special
-    :foreground foreground-1)
+    :foreground foreground-red)
    ;; calendar
    (calendar-today-face
     :foreground emph-4 :bold t)
    (holiday-face
-    :foreground emph-8)
+    :foreground emph-1)
    (diary-face
-    :foreground emph-7)
+    :foreground emph-2)
    ;; erc
    (erc-default-face
     :inherit default)
    (erc-current-nick-face
     :inherit font-lock-keyword-face)
    (erc-action-face
-    :foreground foreground-1)
+    :foreground foreground-red)
    (erc-dangerous-host-face
     :inherit font-lock-warning-face)
    (erc-highlight-face
@@ -303,7 +324,7 @@
    (erc-prompt-face
     :inherit eshell-prompt)
    (erc-notice-face
-    :foreground emph-7)
+    :foreground emph-2)
    (erc-timestamp-face
     :inherit font-lock-comment-face)
    (erc-pal-face
@@ -313,9 +334,9 @@
     :background background-3)
    ;; diff
    (diff-file-header
-    :background background-1 :foreground victory-blue)
+    :background background-1 :foreground emph-3)
    (diff-header
-    :inherit default :foreground emph-1)
+    :inherit default :foreground foreground-purple)
    (diff-indicator-changed
     :foreground full-yellow :weight bold)
    (diff-changed
@@ -323,7 +344,7 @@
    (diff-indicator-removed
     :foreground full-red :weight bold)
    (diff-removed
-    :foreground emph-8)
+    :foreground emph-1)
    (diff-indicator-added
     :foreground full-green :weight bold)
    (diff-added
@@ -352,13 +373,13 @@
    (magit-item-mark
     :background background-3)
    (magit-log-graph
-    :foreground victory-blue)
+    :foreground emph-3)
    (magit-log-head-label-bisect-bad
-    :foreground emph-8)
+    :foreground emph-1)
    (magit-log-head-label-bisect-good
     :foreground emph-4)
    (magit-log-head-label-default
-    :foreground emph-7 :weight bold)
+    :foreground emph-2 :weight bold)
    (magit-log-head-label-local
     :inherit magit-log-head-label-default :foreground emph-4)
    (magit-log-head-label-patches
@@ -391,7 +412,7 @@
    (twittering-uri-face
     :inherit link)
    (twittering-timeline-header-face
-    :foreground foreground-1 :weight bold)
+    :foreground foreground-red :weight bold)
    (twittering-timeline-footer-face
     :inherit twittering-timeline-header-face)
    ;; outline
@@ -400,17 +421,17 @@
    (outline-2
     :foreground emph-4 :weight bold)
    (outline-4
-    :foreground foreground-0 :weight bold)
+    :foreground foreground-white :weight bold)
    (outline-3
-    :foreground foreground-1 :weight bold)
+    :foreground foreground-red :weight bold)
    (outline-5
     :foreground emph-3 :weight bold)
    (outline-6
-    :foreground emph-7 :weight bold)
+    :foreground emph-2 :weight bold)
    (outline-7
     :foreground emph-5 :weight bold)
    (outline-8
-    :foreground emph-1 :weight bold)
+    :foreground foreground-purple :weight bold)
    ;; org-mode
    (org-level-1
     :inherit outline-1)
@@ -429,7 +450,7 @@
    (org-level-8
     :inherit outline-8)
    (org-hide
-    :foreground midnight)
+    :foreground background-1)
    (org-link
     :inherit link)
    (org-checkbox
@@ -437,17 +458,17 @@
    (org-done
     :foreground emph-4 :weight bold)
    (org-todo
-    :foreground foreground-0 :weight bold)
+    :foreground foreground-white :weight bold)
    (org-table
-    :foreground foreground-1)
+    :foreground foreground-red)
    (org-date
-    :foreground foreground-0 :weight bold)
+    :foreground foreground-white :weight bold)
    (org-document-info-keyword
-    :foreground emph-1)
+    :foreground foreground-purple)
    (org-document-info
-    :foreground foreground-1 :weight bold :slant italic)
+    :foreground foreground-red :weight bold :slant italic)
    (org-block-begin-line
-    :background background-3 :foreground emph-1 :weight bold)
+    :background background-3 :foreground foreground-purple :weight bold)
    (org-block-background
     :background background-2)
    (org-block-end-line
@@ -457,7 +478,7 @@
    (org-agenda-date
     :foreground emph-3)
    (org-agenda-date-weekend
-    :foreground foreground-0)
+    :foreground foreground-white)
    (org-agenda-structure
     :inherit header-line)
    (org-warning
@@ -474,11 +495,11 @@
    (diredp-compressed-file-suffix
     :foreground emph-6 :weight bold)
    (diredp-date-time
-    :foreground emph-1)
+    :foreground foreground-purple)
    (diredp-deletion
-    :foreground emph-8 :weight bold :slant italic)
+    :foreground emph-1 :weight bold :slant italic)
    (diredp-deletion-file-name
-    :foreground emph-8 :underline t)
+    :foreground emph-1 :underline t)
    (diredp-symlink
     :foreground emph-6)
    (diredp-dir-heading
@@ -488,7 +509,7 @@
    (diredp-exec-priv
     :foreground emph-4)
    (diredp-write-priv
-    :foreground emph-8)
+    :foreground emph-1)
    (diredp-read-priv
     :foreground emph-6)
    (diredp-dir-priv
@@ -498,23 +519,23 @@
    (diredp-other-priv
     :foreground emph-6 :weight bold)
    (diredp-rare-priv
-    :foreground emph-8 :weight bold)
+    :foreground emph-1 :weight bold)
    (diredp-no-priv
-    :foreground emph-1)
+    :foreground foreground-purple)
    (diredp-file-name
-    :foreground foreground-0)
+    :foreground foreground-white)
    (diredp-file-suffix
     :inherit dired-file-name)
    (diredp-number
-    :foreground victory-blue)
+    :foreground emph-3)
    (diredp-executable-tag
     :foreground emph-4 :weight bold)
    (diredp-flag-mark
-    :foreground emph-8 :weight bold)
+    :foreground emph-1 :weight bold)
    (diredp-flag-mark-line
     :background background-3)
    (diredp-mode-line-marked
-    :foreground emph-8)
+    :foreground emph-1)
    (diredp-mode-line-flagged
     :foreground emph-6)
    (diredp-ignored-file-name
