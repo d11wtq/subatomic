@@ -138,21 +138,20 @@
 
 
 (defvar subatomic256-palette
-  '((midnight          "#1c1c1c")
-    (midnight-1        "#262626")
-    (midnight-2        "#444444")
-    (midnight-3        "#6868a8")
-    (mystic-blue       "#9292d6")
-    (victory-blue      "#87afaf")
-    (victory-blue+1    "#87afd7")
-    (jungle-green      "#afd75f")
-    (undergrowth-green "#87af5f")
-    (deep-gold         "#ffaf00")
-    (axiomatic-purple  "#af5faf")
-    (brick-red         "#d7875f")
-    (piggy-pink        "#ffd7d7")
-    (relaxed-white     "#d7d7d7")
-    (cold-mud          "#d7afaf")
+  '((background-1        "#1c1c1c")
+    (background-2        "#262626")
+    (background-3        "#444444")
+    (background-4        "#6868a8")
+    (foreground-0        "#d7d7d7")
+    (foreground-1        "#d7afaf")
+    (emph-1              "#9292d6")
+    (emph-2              "#87afaf")
+    (emph-3              "#87afd7")
+    (emph-4              "#afd75f")
+    (emph-5              "#87af5f")
+    (emph-6              "#ffaf00")
+    (emph-7              "#af5faf")
+    (emph-8              "#d7875f")
 
     (full-white        "#ffffff")
     (full-black        "#000000")
@@ -167,21 +166,21 @@
 (setq
  subatomic256-faces
  '((default
-     :background midnight :foreground relaxed-white)
+     :background background-1 :foreground foreground-0)
    (fringe
     :background midnight)
    (vertical-border
-    :foreground midnight-2)
+    :foreground background-3)
    (region
-    :background midnight-2 :foreground full-white)
+    :background background-3 :foreground full-white)
    (show-paren-match-face
     :foreground full-green :bold t)
    (show-paren-mismatch-face
     :foreground full-red :bold t)
    (isearch
-    :background midnight-2 :foreground full-green :bold t)
+    :background background-3 :foreground full-green :bold t)
    (lazy-highlight
-    :background midnight-2 :foreground deep-gold :bold t)
+    :background background-3 :foreground emph-6 :bold t)
    (query-replace
     :inherit lazy-highlight)
    (trailing-whitespace
@@ -189,54 +188,54 @@
    (mode-line
     :foreground full-white :weight bold :box (:line-width 1 :style released-button))
    (powerline-active1
-    :background midnight-2)
+    :background background-3)
    (powerline-active2
-    :background midnight-1)
+    :background background-2)
    (modeline-inactive
-    :background midnight-2 :foreground mystic-blue)
+    :background background-3 :foreground emph-1)
    (powerline-inactive1
-    :background midnight-2)
+    :background background-3)
    (powerline-inactive2
-    :background midnight-1)
+    :background background-2)
    (header-line
-    :background midnight-2 :foreground full-white :weight bold)
+    :background background-3 :foreground full-white :weight bold)
    (hl-line
-    :background midnight-1)
+    :background background-2)
    (highlight-current-line-face
     :inherit hl-line)
    (minibuffer-prompt
-    :foreground axiomatic-purple :weight bold)
+    :foreground emph-7 :weight bold)
    (escape-glyph
-    :foreground cold-mud :weight bold)
+    :foreground foreground-1 :weight bold)
    (link
-    :foreground victory-blue+1 :weight bold :underline t)
+    :foreground emph-3 :weight bold :underline t)
    ;; font lock
    (font-lock-keyword-face
-    :foreground deep-gold :weight bold)
+    :foreground emph-6 :weight bold)
    (font-lock-function-name-face
     :foreground victory-blue)
    (font-lock-warning-face
-    (:foreground brick-red))
+    (:foreground emph-8))
    (font-lock-builtin-face
-    :foreground deep-gold)
+    :foreground emph-6)
    (font-lock-variable-name-face
     :foreground victory-blue)
    (font-lock-constant-face
     :foreground full-white :weight bold :italic t)
    (font-lock-type-face
-    :foreground victory-blue+1 :weight bold)
+    :foreground emph-3 :weight bold)
    (font-lock-negation-char-face
-    :foreground brick-red :weight bold)
+    :foreground emph-8 :weight bold)
    (font-lock-preprocessor-face
-    :foreground cold-mud)
+    :foreground foreground-1)
    (font-lock-comment-face
-    :foreground mystic-blue)
+    :foreground emph-1)
    (font-lock-string-face
-    :foreground jungle-green)
+    :foreground emph-4)
    (font-lock-comment-delimiter-face
-    :foreground midnight-3)
+    :foreground background-4)
    (font-lock-doc-face
-    :foreground axiomatic-purple :italic t)
+    :foreground emph-7 :italic t)
    ;; flymake
    (flymake-errline
     :underline full-red)
@@ -246,11 +245,11 @@
    (eshell-ls-clutter
     :inherit font-lock-comment-face)
    (eshell-ls-executable
-    :foreground jungle-green)
+    :foreground emph-4)
    (eshell-ls-directory
-    :foreground victory-blue :bold t)
+    :foreground emph-2 :bold t)
    (eshell-ls-archive
-    :foreground deep-gold)
+    :foreground emph-6)
    (eshell-ls-backup
     :inherit font-lock-comment-face)
    (eshell-ls-missing
@@ -262,35 +261,35 @@
    (eshell-prompt
     :inherit minibuffer-prompt)
    (eshell-ls-backup
-    :foreground brick-red :slant italic)
+    :foreground emph-8 :slant italic)
    (eshell-ls-product
     :inherit default :weight bold)
    (eshell-ls-readonly
     :inherit font-lock-comment)
    (eshell-ls-special
-    :foreground cold-mud)
+    :foreground foreground-1)
    ;; calendar
    (calendar-today-face
-    :foreground jungle-green :bold t)
+    :foreground emph-4 :bold t)
    (holiday-face
-    :foreground brick-red)
+    :foreground emph-8)
    (diary-face
-    :foreground axiomatic-purple)
+    :foreground emph-7)
    ;; erc
    (erc-default-face
     :inherit default)
    (erc-current-nick-face
     :inherit font-lock-keyword-face)
    (erc-action-face
-    :foreground cold-mud)
+    :foreground foreground-1)
    (erc-dangerous-host-face
     :inherit font-lock-warning-face)
    (erc-highlight-face
     :weight bold)
    (erc-direct-msg-face
-    :foreground jungle-green)
+    :foreground emph-4)
    (erc-nick-msg-face
-    :foreground victory-blue+1 :weight bold)
+    :foreground emph-3 :weight bold)
    (erc-fool-face
     :inherit font-lock-comment-face)
    (erc-input-face
@@ -304,38 +303,38 @@
    (erc-prompt-face
     :inherit eshell-prompt)
    (erc-notice-face
-    :foreground axiomatic-purple)
+    :foreground emph-7)
    (erc-timestamp-face
     :inherit font-lock-comment-face)
    (erc-pal-face
-    :foreground jungle-green)
+    :foreground emph-4)
    ;; highlight-symbol
    (highlight-symbol-face
-    :background midnight-2)
+    :background background-3)
    ;; diff
    (diff-file-header
-    :background midnight :foreground victory-blue)
+    :background background-1 :foreground victory-blue)
    (diff-header
-    :inherit default :foreground mystic-blue)
+    :inherit default :foreground emph-1)
    (diff-indicator-changed
     :foreground full-yellow :weight bold)
    (diff-changed
-    :foreground deep-gold)
+    :foreground emph-6)
    (diff-indicator-removed
     :foreground full-red :weight bold)
    (diff-removed
-    :foreground brick-red)
+    :foreground emph-8)
    (diff-indicator-added
     :foreground full-green :weight bold)
    (diff-added
-    :foreground jungle-green)
+    :foreground emph-4)
    (diff-hunk-header
     :foreground full-white)
    (diff-refine-change
-    :background midnight-2 :foreground full-white :weight bold)
+    :background background-3 :foreground full-white :weight bold)
    ;; magit
    (magit-branch
-    :foreground jungle-green :weight bold)
+    :foreground emph-4 :weight bold)
    (magit-diff-add
     :inherit diff-added)
    (magit-diff-del
@@ -349,19 +348,19 @@
    (magit-header
     :inherit diff-header)
    (magit-item-highlight
-    :background midnight-2)
+    :background background-3)
    (magit-item-mark
-    :background midnight-2)
+    :background background-3)
    (magit-log-graph
     :foreground victory-blue)
    (magit-log-head-label-bisect-bad
-    :foreground brick-red)
+    :foreground emph-8)
    (magit-log-head-label-bisect-good
-    :foreground jungle-green)
+    :foreground emph-4)
    (magit-log-head-label-default
-    :foreground axiomatic-purple :weight bold)
+    :foreground emph-7 :weight bold)
    (magit-log-head-label-local
-    :inherit magit-log-head-label-default :foreground jungle-green)
+    :inherit magit-log-head-label-default :foreground emph-4)
    (magit-log-head-label-patches
     :inherit magit-log-head-label-default)
    (magit-log-head-label-remote
@@ -371,16 +370,16 @@
    (magit-log-message
     :inherit default)
    (magit-log-sha1
-    :foreground deep-gold)
+    :foreground emph-6)
    (magit-section-title
     :inherit header-line)
    (magit-section-highlight
-    :background midnight-2)
+    :background background-3)
    (magit-whitespace-warning-face
     :inherit font-lock-warning)
    ;; markdown-mode
    (markdown-markup-face
-    :foreground victory-blue+1)
+    :foreground emph-3)
    ;; compilation
    (compilation-info
     :inherit default)
@@ -392,26 +391,26 @@
    (twittering-uri-face
     :inherit link)
    (twittering-timeline-header-face
-    :foreground cold-mud :weight bold)
+    :foreground foreground-1 :weight bold)
    (twittering-timeline-footer-face
     :inherit twittering-timeline-header-face)
    ;; outline
    (outline-1
-    :foreground deep-gold :weight bold)
+    :foreground emph-6 :weight bold)
    (outline-2
-    :foreground jungle-green :weight bold)
+    :foreground emph-4 :weight bold)
    (outline-4
-    :foreground relaxed-white :weight bold)
+    :foreground foreground-0 :weight bold)
    (outline-3
-    :foreground cold-mud :weight bold)
+    :foreground foreground-1 :weight bold)
    (outline-5
-    :foreground victory-blue+1 :weight bold)
+    :foreground emph-3 :weight bold)
    (outline-6
-    :foreground axiomatic-purple :weight bold)
+    :foreground emph-7 :weight bold)
    (outline-7
-    :foreground undergrowth-green :weight bold)
+    :foreground emph-5 :weight bold)
    (outline-8
-    :foreground mystic-blue :weight bold)
+    :foreground emph-1 :weight bold)
    ;; org-mode
    (org-level-1
     :inherit outline-1)
@@ -434,31 +433,31 @@
    (org-link
     :inherit link)
    (org-checkbox
-    :background midnight :foreground full-white :weight bold :box (:line-width 1 :style released-button))
+    :background background-1 :foreground full-white :weight bold :box (:line-width 1 :style released-button))
    (org-done
-    :foreground jungle-green :weight bold)
+    :foreground emph-4 :weight bold)
    (org-todo
-    :foreground piggy-pink :weight bold)
+    :foreground foreground-0 :weight bold)
    (org-table
-    :foreground cold-mud)
+    :foreground foreground-1)
    (org-date
-    :foreground piggy-pink :weight bold)
+    :foreground foreground-0 :weight bold)
    (org-document-info-keyword
-    :foreground mystic-blue)
+    :foreground emph-1)
    (org-document-info
-    :foreground cold-mud :weight bold :slant italic)
+    :foreground foreground-1 :weight bold :slant italic)
    (org-block-begin-line
-    :background midnight-2 :foreground mystic-blue :weight bold)
+    :background background-3 :foreground emph-1 :weight bold)
    (org-block-background
-    :background midnight-1)
+    :background background-2)
    (org-block-end-line
     :inherit org-block-begin-line)
    (org-agenda-date-today
-    :foreground jungle-green :background midnight-2 :weight bold)
+    :foreground emph-4 :background background-3 :weight bold)
    (org-agenda-date
-    :foreground victory-blue+1)
+    :foreground emph-3)
    (org-agenda-date-weekend
-    :foreground piggy-pink)
+    :foreground foreground-0)
    (org-agenda-structure
     :inherit header-line)
    (org-warning
@@ -473,53 +472,53 @@
     :inherit font-lock-keyword)
    ;; dired+
    (diredp-compressed-file-suffix
-    :foreground deep-gold :weight bold)
+    :foreground emph-6 :weight bold)
    (diredp-date-time
-    :foreground mystic-blue)
+    :foreground emph-1)
    (diredp-deletion
-    :foreground brick-red :weight bold :slant italic)
+    :foreground emph-8 :weight bold :slant italic)
    (diredp-deletion-file-name
-    :foreground brick-red :underline t)
+    :foreground emph-8 :underline t)
    (diredp-symlink
-    :foreground deep-gold)
+    :foreground emph-6)
    (diredp-dir-heading
     :inherit minibuffer-prompt)
    (diredp-display-msg
     :inherit default)
    (diredp-exec-priv
-    :foreground jungle-green)
+    :foreground emph-4)
    (diredp-write-priv
-    :foreground brick-red)
+    :foreground emph-8)
    (diredp-read-priv
-    :foreground deep-gold)
+    :foreground emph-6)
    (diredp-dir-priv
-    :foreground victory-blue+1 :weight bold)
+    :foreground emph-3 :weight bold)
    (diredp-link-priv
-    :foreground deep-gold)
+    :foreground emph-6)
    (diredp-other-priv
-    :foreground deep-gold :weight bold)
+    :foreground emph-6 :weight bold)
    (diredp-rare-priv
-    :foreground brick-red :weight bold)
+    :foreground emph-8 :weight bold)
    (diredp-no-priv
-    :foreground mystic-blue)
+    :foreground emph-1)
    (diredp-file-name
-    :foreground relaxed-white)
+    :foreground foreground-0)
    (diredp-file-suffix
     :inherit dired-file-name)
    (diredp-number
     :foreground victory-blue)
    (diredp-executable-tag
-    :foreground jungle-green :weight bold)
+    :foreground emph-4 :weight bold)
    (diredp-flag-mark
-    :foreground brick-red :weight bold)
+    :foreground emph-8 :weight bold)
    (diredp-flag-mark-line
-    :background midnight-2)
+    :background background-3)
    (diredp-mode-line-marked
-    :foreground brick-red)
+    :foreground emph-8)
    (diredp-mode-line-flagged
-    :foreground deep-gold)
+    :foreground emph-6)
    (diredp-ignored-file-name
-    :foreground midnight-3)
+    :foreground background-4)
    ))
 
 ;;;###autoload
