@@ -137,6 +137,7 @@
 (defvar subatomic256--watch-desc nil)
 
 (defun subatomic256-watch-palette ()
+  (interactive)
   (require 'filenotify)
   (subatomic256-watch-palette-stop)
   (setq subatomic256--watch-desc
@@ -146,6 +147,7 @@
          #'subatomic256--watch-callback)))
 
 (defun subatomic256-watch-palette-stop ()
+  (interactive)
   (require 'filenotify)
   (when subatomic256--watch-desc
     (file-notify-rm-watch subatomic256--watch-desc)
