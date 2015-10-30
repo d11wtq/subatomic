@@ -170,13 +170,14 @@
           (foreground-4 "#7dcc96")
           (foreground-5 "#d1af93")
           (foreground-6 "#e08787")
-          (emph-1 "#609afd")
-          (emph-2 "#5fc1ba")
+          (foreground-7 "#aec8f4")
+          (emph-1 "#77a4f1")
+          (emph-2 "#4bb4ac")
           (emph-3 "#69c74d")
           (emph-4 "#cfba60")
           (emph-5 "#e17b51")
           (emph-6 "#ff5e5e")
-          (emph-7 "#d65fea")
+          (emph-7 "#cd64de")
           (full-white        "#ffffff")
           (full-black        "#000000")
           (full-red          "#ff0000")
@@ -255,11 +256,11 @@
       :foreground foreground-5)
 
      (font-lock-builtin-face
-      :foreground foreground-2)
+      :foreground emph-7)
      (font-lock-function-name-face
-      :foreground foreground-3)
+      :foreground emph-1)
      (font-lock-keyword-face
-      :foreground foreground-2)
+      :foreground emph-7)
      (font-lock-preprocessor-face
       :foreground foreground-6)
 
@@ -494,23 +495,23 @@
      (markdown-italic-face
       :foreground emph-2 :slant italic)
      (markdown-bold-face
-      :foreground emph-3 :weight bold)
+      :foreground emph-2 :weight bold)
      (markdown-strike-through-face
-      :foreground emph-3 :strike-through t)
+      :foreground emph-2 :strike-through t)
      (markdown-markup-face
-      :foreground emph-4)
+      :foreground foreground-2)
      (markdown-header-face
-      :foreground emph-5)
+      :foreground emph-1)
      (markdown-header-delimiter-face
-      :foreground emph-5)
+      :inherit markdown-header-face)
      (markdown-metadata-key-face
       :foreground foreground-3)
      (markdown-metadata-value-face
       :foreground foreground-4)
      (markdown-link-face
-      :foreground emph-4)
+      :inherit markdown-markup-face)
      (markdown-pre-face
-      :foreground foreground-5)
+      :foreground foreground-7)
      (markdown-url-face
       :foreground foreground-3)
 
