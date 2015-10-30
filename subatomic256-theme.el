@@ -193,6 +193,10 @@
        :background background-1 :foreground foreground-1)
      (fringe
       :background background-2)
+     (cursor
+      :background emph-7)
+     (secondary-selection
+      :background emph-4)
      (vertical-border
       :foreground background-3)
      (region
@@ -230,9 +234,194 @@
      (minibuffer-prompt
       :foreground emph-2)
      (escape-glyph
-      :foreground foreground-2 :weight bold)
+      :foreground foreground-2)
      (link
-      :foreground foreground-2 :weight bold :underline t)
+      :foreground foreground-2 :underline t)
+     (link-visited
+      :inherit link
+      :foreground emph-7)
+     (highlight
+      :background foreground-7)
+     (success
+      :foreground emph-3)
+     (tool-bar
+      :foreground foreground-2)
+     (tooltip
+      :background background-3)
+
+     ;; calendar
+     (calendar-today-face
+      :foreground emph-1)
+     (holiday-face
+      :foreground emph-2)
+     (diary-face
+      :foreground emph-3)
+     (calendar-weekend-header
+      :inherit calendar-weekday-header)
+
+     ;; compilation
+     (compilation-info
+      :inherit default)
+     (compilation-warning
+      :inherit font-lock-warning)
+
+     ;; diff
+     (diff-added
+      :inherit magit-diff-added)
+     (diff-changed
+      :inherit magit-diff-base)
+     (diff-removed
+      :inherit magit-diff-removed)
+     (diff-context
+      :inherit magit-diff-context)
+     (diff-file-header
+      :inherit magit-diff-file-heading)
+     (diff-header
+      :inherit diff-file-header)
+     (diff-hunk-header
+      :inherit magit-diff-hunk-heading)
+     (diff-indicator-changed
+       :foreground emph-5)
+     (diff-indicator-removed
+      :foreground emph-6)
+     (diff-indicator-added
+      :foreground emph-3)
+     (diff-refine-added
+      :inherit diff-added
+      :background background-3)
+     (diff-refine-change
+      :inherit diff-changed
+      :background background-3)
+     (diff-refine-removed
+      :inherit diff-removed
+      :background background-3)
+
+     (smerge-base
+      :inherit magit-diff-base)
+     (smerge-markers
+      :inherit magit-diff-conflict-heading)
+     (smerge-mine
+      :inherit magit-diff-our)
+     (smerge-other
+      :inherit magit-diff-their)
+     (smerge-refined-added
+      :inherit magit-diff-added)
+     (smerge-refined-changed
+      :inherit magit-diff-base)
+     (smerge-refined-removed
+      :inherit magit-diff-removed)
+
+     ;; dired+
+     (diredp-compressed-file-suffix
+      :foreground foreground-5 :weight bold)
+     (diredp-date-time
+      :foreground foreground-3)
+     (diredp-deletion
+      :foreground emph-6 :weight bold :slant italic)
+     (diredp-deletion-file-name
+      :foreground emph-6 :underline t)
+     (diredp-symlink
+      :foreground foreground-2)
+     (diredp-dir-heading
+      :inherit minibuffer-prompt)
+     (diredp-display-msg
+      :inherit default)
+     (diredp-exec-priv
+      :foreground emph-3)
+     (diredp-write-priv
+      :foreground emph-2)
+     (diredp-read-priv
+      :foreground emph-2)
+     (diredp-dir-priv
+      :foreground emph-4 :weight bold)
+     (diredp-link-priv
+      :foreground emph-4)
+     (diredp-other-priv
+      :foreground emph-4 :weight bold)
+     (diredp-rare-priv
+      :foreground emph-4 :weight bold)
+     (diredp-no-priv
+      :foreground foreground-5)
+     (diredp-file-name
+      :foreground foreground-1)
+     (diredp-file-suffix
+      :inherit dired-file-name)
+     (diredp-number
+      :foreground emph-5)
+     (diredp-executable-tag
+      :foreground emph-3 :weight bold)
+     (diredp-flag-mark
+      :foreground emph-7 :weight bold)
+     (diredp-flag-mark-line
+      :background background-3)
+     (diredp-mode-line-marked
+      :foreground emph-7)
+     (diredp-mode-line-flagged
+      :foreground emph-7)
+     (diredp-ignored-file-name
+      :foreground foreground-3)
+
+     ;; erc
+     (erc-default-face
+      :inherit default)
+     (erc-current-nick-face
+      :inherit font-lock-keyword-face)
+     (erc-action-face
+      :foreground foreground-2)
+     (erc-dangerous-host-face
+      :inherit font-lock-warning-face)
+     (erc-highlight-face
+      :weight bold)
+     (erc-direct-msg-face
+      :foreground emph-1)
+     (erc-nick-msg-face
+      :foreground emph-3 :weight bold)
+     (erc-fool-face
+      :inherit font-lock-comment-face)
+     (erc-input-face
+      :inherit default :weight bold)
+     (erc-error-face
+      :inherit font-lock-warning-face)
+     (erc-keyword-face
+      :inherit font-lock-keyword-face)
+     (erc-nick-default-face
+      :inherit default)
+     (erc-prompt-face
+      :inherit eshell-prompt)
+     (erc-notice-face
+      :foreground emph-7)
+     (erc-timestamp-face
+      :inherit font-lock-comment-face)
+     (erc-pal-face
+      :foreground emph-1)
+
+     ;; eshell
+     (eshell-ls-clutter
+      :inherit font-lock-comment-face)
+     (eshell-ls-directory
+      :foreground foreground-3)
+     (eshell-ls-special
+      :foreground emph-2)
+     (eshell-ls-archive
+      :foreground emph-4)
+     (eshell-ls-executable
+      :foreground emph-5)
+     (eshell-ls-backup
+      :foreground emph-7 :slant italic)
+     (eshell-ls-backup
+      :inherit font-lock-comment-face)
+     (eshell-ls-missing
+      :inherit font-lock-warning-face)
+     (eshell-ls-unreadable
+      :inherit font-lock-warning-face)
+     (eshell-ls-symlink
+      :inherit font-lock-builtin-face)
+     (eshell-prompt
+      :inherit minibuffer-prompt)
+     (eshell-ls-product
+      :inherit default :weight bold)
+     (eshell-ls-readonly
+      :inherit font-lock-comment)
 
      ;; font lock
      (font-lock-variable-name-face
@@ -270,106 +459,42 @@
      (flymake-warnline
       :underline full-yellow)
 
-     ;; replace
-     (match
-      :background background-2
-      :foreground emph-3)
-
-     ;; eshell
-     (eshell-ls-clutter
-      :inherit font-lock-comment-face)
-     (eshell-ls-directory
-      :foreground foreground-3)
-     (eshell-ls-special
-      :foreground emph-2)
-     (eshell-ls-archive
-      :foreground emph-4)
-     (eshell-ls-executable
-      :foreground emph-5)
-     (eshell-ls-backup
-      :foreground emph-7 :slant italic)
-     (eshell-ls-backup
-      :inherit font-lock-comment-face)
-     (eshell-ls-missing
-      :inherit font-lock-warning-face)
-     (eshell-ls-unreadable
-      :inherit font-lock-warning-face)
-     (eshell-ls-symlink
-      :inherit font-lock-builtin-face)
-     (eshell-prompt
-      :inherit minibuffer-prompt)
-     (eshell-ls-product
-      :inherit default :weight bold)
-     (eshell-ls-readonly
-      :inherit font-lock-comment)
-
-     ;; calendar
-     (calendar-today-face
-      :foreground emph-1)
-     (holiday-face
-      :foreground emph-2)
-     (diary-face
-      :foreground emph-3)
-
-     ;; erc
-     (erc-default-face
-      :inherit default)
-     (erc-current-nick-face
-      :inherit font-lock-keyword-face)
-     (erc-action-face
-      :foreground foreground-2)
-     (erc-dangerous-host-face
-      :inherit font-lock-warning-face)
-     (erc-highlight-face
-      :weight bold)
-     (erc-direct-msg-face
-      :foreground emph-1)
-     (erc-nick-msg-face
-      :foreground emph-3 :weight bold)
-     (erc-fool-face
-      :inherit font-lock-comment-face)
-     (erc-input-face
-      :inherit default :weight bold)
-     (erc-error-face
-      :inherit font-lock-warning-face)
-     (erc-keyword-face
-      :inherit font-lock-keyword-face)
-     (erc-nick-default-face
-      :inherit default)
-     (erc-prompt-face
-      :inherit eshell-prompt)
-     (erc-notice-face
-      :foreground emph-7)
-     (erc-timestamp-face
-      :inherit font-lock-comment-face)
-     (erc-pal-face
-      :foreground emph-1)
-
      ;; highlight-symbol
      (highlight-symbol-face
       :background background-3)
 
-     ;; diff
-     (diff-file-header
-      :inherit magit-diff-file-heading)
-     (diff-header
-      :inherit diff-file-header)
-     (diff-hunk-header
-      :inherit magit-diff-hunk-heading)
-     (diff-indicator-changed
-       :foreground emph-5)
-     (diff-changed
-      :foreground foreground-5)
-     (diff-indicator-removed
+     ;; info
+     (info-header-node
       :foreground emph-6)
-     (diff-removed
-      :foreground foreground-6)
-     (diff-indicator-added
+     (info-menu-star
+      :foreground emph-5)
+     (info-node
+      :foreground emph-6)
+     (info-title-1
+      :inherit outline-1)
+     (info-title-2
+      :inherit outline-2)
+     (info-title-3
+      :inherit outline-3)
+     (info-title-4
+      :inherit outline-4)
+     (info-xref
+      :inherit link)
+     (info-xref-visited
+      :inherit link-visited)
+
+     ;; isearch
+     (isearch
+      :foreground emph-3
+      :background background-3)
+     (isearch-fail
+      :foreground emph-6
+      :background background-3)
+
+     ;; replace
+     (match
+      :background background-2
       :foreground emph-3)
-     (diff-added
-      :foreground foreground-4)
-     (diff-refine-change
-      :background background-3 :foreground foreground-5)
 
      ;; magit
      (magit-dimmed
@@ -400,7 +525,7 @@
       :foreground emph-5)
      (magit-section-heading-selection
       :foreground emph-4)
-     (magit-log-groph
+     (magit-log-graph
       :foreground background-3)
      (magit-log-author
       :foreground foreground-4)
@@ -490,7 +615,6 @@
      (magit-diffstat-removed
       :foreground emph-6)
 
-
      ;; markdown-mode
      (markdown-italic-face
       :foreground emph-2 :slant italic)
@@ -514,12 +638,8 @@
       :foreground foreground-7)
      (markdown-url-face
       :foreground foreground-3)
-
-     ;; compilation
-     (compilation-info
-      :inherit default)
-     (compilation-warning
-      :inherit font-lock-warning)
+     (markdown-highlight-face
+      :inherit highlight)
 
      ;; outline
      (outline-1
@@ -527,9 +647,9 @@
      (outline-2
       :foreground emph-3 :weight bold)
      (outline-4
-      :foreground emph-4 :weight bold)
-     (outline-3
       :foreground foreground-2 :weight bold)
+     (outline-3
+      :foreground emph-4 :weight bold)
      (outline-5
       :foreground foreground-3 :weight bold)
      (outline-6
@@ -537,7 +657,7 @@
      (outline-7
       :foreground foreground-5 :weight bold)
      (outline-8
-      :foreground foreground-6 :weight bold)
+      :foreground foreground-7 :weight bold)
 
      ;; org-mode
      (org-level-1
@@ -556,8 +676,40 @@
       :inherit outline-7)
      (org-level-8
       :inherit outline-8)
+     (org-agenda-done
+      :foreground emph-3)
+     (org-agenda-column-dateline
+      :background background-2
+      :foreground emph-4)
+     (org-agenda-restriction-lock
+      :background background-2
+      :foreground emph-5)
+     (org-column
+      :background background-2
+      :foreground emph-2)
+     (org-column-title
+      :inherit org-column
+      :foreground emph-1)
+     (org-date
+      :inherit org-agenda-date)
+     (org-date-selected
+      :inherit org-agenda-date-today)
+     (org-footnote
+      :inherit link)
+     (org-mode-line-clock
+      :inherit org-agenda-date)
+     (org-mode-line-clock-overrun
+      :inherit org-agenda-date-today)
+     (org-macro
+      :foreground emph-5)
+     (org-meta-line
+      :foreground emph-4)
+     (org-clock-overlay
+      :background background-3)
      (org-hide
       :foreground background-1)
+     (org-document-title
+      :foreground emph-1)
      (org-link
       :inherit link)
      (org-checkbox
@@ -598,56 +750,186 @@
       :inherit font-lock-doc-face)
      (org-special-keyword
       :inherit font-lock-keyword)
-
-     ;; dired+
-     (diredp-compressed-file-suffix
-      :foreground foreground-5 :weight bold)
-     (diredp-date-time
-      :foreground foreground-3)
-     (diredp-deletion
-      :foreground emph-6 :weight bold :slant italic)
-     (diredp-deletion-file-name
-      :foreground emph-6 :underline t)
-     (diredp-symlink
-      :foreground foreground-2)
-     (diredp-dir-heading
-      :inherit minibuffer-prompt)
-     (diredp-display-msg
-      :inherit default)
-     (diredp-exec-priv
+     (org-scheduled
       :foreground emph-3)
-     (diredp-write-priv
-      :foreground emph-2)
-     (diredp-read-priv
-      :foreground emph-2)
-     (diredp-dir-priv
-      :foreground emph-4 :weight bold)
-     (diredp-link-priv
-      :foreground emph-4)
-     (diredp-other-priv
-      :foreground emph-4 :weight bold)
-     (diredp-rare-priv
-      :foreground emph-4 :weight bold)
-     (diredp-no-priv
-      :foreground foreground-5)
-     (diredp-file-name
-      :foreground foreground-1)
-     (diredp-file-suffix
-      :inherit dired-file-name)
-     (diredp-number
+     (org-scheduled-previously
+      :foreground emph-6)
+     (org-scheduled-today
+      :inherit org-scheduled
+      :underline t)
+     (org-upcoming-deadline
+      :foreground emph-6
+      :underline t)
+     (org-verbatim
+      :inherit font-lock-string-face)
+     (org-verse
+      :inherit org-verbatim)
+     (org-time-grid
       :foreground emph-5)
-     (diredp-executable-tag
-      :foreground emph-3 :weight bold)
-     (diredp-flag-mark
-      :foreground emph-7 :weight bold)
-     (diredp-flag-mark-line
+     (org-special-keyword
+      :inherit font-lock-keyword-face)
+     (org-tag
+      :foreground emph-2)
+     (org-tag-group
+      :inherit org-tag
+      :underline t)
+     (org-property-value
+      :foreground foreground-5)
+     (org-todo
+      :foreground foreground-4)
+
+     (c-annotation-face
+      :inherit font-lock-constant-face)
+     (c-nonbreakable-space-face
       :background background-3)
-     (diredp-mode-line-marked
-      :foreground emph-7)
-     (diredp-mode-line-flagged
-      :foreground emph-7)
-     (diredp-ignored-file-name
+     (change-log-acknowledgment
+      :inherit font-lock-constant-face)
+
+     ;; company-mode
+     (company-echo-common
+      :background background-3)
+     (company-preview
+      :background background-2)
+     (company-preview-common
+      :inherit company-preview)
+     (company-preview-search
+      :inherit company-preview
+      :foreground foreground-6)
+     (company-scrollbar-bg
+      :inherit company-preview
+      :foreground foreground-4)
+     (company-scrollbar-fg
+      :inherit company-preview
+      :foreground foreground-6)
+     (company-template-field
+      :inherit company-preview
+      :foreground emph-4)
+     (company-tooltip
+      :inherit company-preview
+      :foreground foreground-2)
+     (company-tooltip-annotation
+      :inherit company-tooltip
       :foreground foreground-3)
+     (company-tooltip-common
+      :inherit company-tooltip
+      :foreground foreground-6)
+     (company-tooltip-common-selection
+      :inherit company-tooltip-common
+      :background background-3)
+     (company-tooltip-mouse
+      :inherit company-preview
+      :foreground emph-4)
+     (company-tooltip-search
+      :inherit company-preview
+      :foreground emph-2)
+     (company-tooltip-selection
+      :inherit company-tooltip
+      :background background-3)
+
+     ;; compilation
+     (compilation-column-number
+      :inherit font-lock-constant-face)
+     (compilation-error
+      :foreground emph-6)
+     (compilation-mode-line-exit
+      :foreground emph-3)
+     (compilation-mode-line-fail
+      :foreground emph-6)
+
+     ;; ghc
+     (ghc-face-error
+      :foreground emph-6)
+     (ghc-face-hole
+      :foreground emph-4)
+     (ghc-face-warn
+      :foreground emph-5)
+
+     ;; ido-mode
+     (ido-indicator
+      :background background-2
+      :foreground emph-6)
+     (ido-only-match
+      :foreground emph-5)
+     (ido-subdir
+      :foreground emph-2)
+
+     ;; message
+     (message-cited-text
+      :foreground emph-6)
+     (message-header-cc
+      :foreground emph-1)
+     (message-header-name
+      :foreground emph-2)
+     (message-header-newsgroups
+      :foreground emph-7)
+     (message-header-other
+      :inherit message-header-cc)
+     (message-header-subject
+      :inherit message-header-newsgroups)
+     (message-header-to
+      :inherit message-header-name)
+     (message-header-xheader
+      :foreground emph-4)
+     (message-mml
+      :foreground emph-3)
+     (message-separator
+      :foreground emph-6)
+     (mm-command-output
+      :foreground emph-6)
+
+     (show-paren-mismatch-face
+      :foreground emph-6)
+     (show-paren-match-face
+      :foreground emph-3)
+     (show-paren-match
+      :background emph-2)
+     (show-paren-mismatch
+      :background emph-7)
+
+     (speedbar-button-face
+      :foreground emph-3)
+     (speedbar-directory-face
+      :foreground emph-2)
+     (speedbar-file-face
+      :foreground emph-3)
+     (speedbar-highlight-face
+      :background background-3)
+     (speedbar-selected-face
+      :background background-2
+      :foreground emph-7)
+     (speedbar-tag-face
+      :foreground emph-6)
+
+     ;; whitespace
+     (whitespace-empty
+      :foreground emph-6
+      :background emph-4)
+     (whitespace-hspace
+      :foreground emph-6
+      :background foreground-7)
+     (whitespace-indentation
+      :inherit whitespace-empty)
+     (whitespace-space
+      :inherit whitespace-hspace)
+     (whitespace-space-after-tab
+      :inherit whitespace-empty)
+     (whitespace-space-before-tab
+      :background emph-5
+      :foreground emph-4)
+     (whitespace-tab
+      :inherit whitespace-space)
+     (whitespace-trailing
+      :background emph-6
+      :foreground emph-4)
+
+     (widget-button-pressed
+      :foreground emph-6)
+     (widget-documentation
+      :foreground emph-2)
+     (widget-field
+      :background background-3)
+     (widget-single-line-field
+      :background background-2)
      ))
   (subatomic256-set-faces))
 
