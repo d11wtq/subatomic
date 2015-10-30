@@ -165,7 +165,7 @@
           (background-2 "#262626")
           (background-3 "#444444")
           (foreground-1 "#d7d7d7")
-          (foreground-2 "#aaa2de")
+          (foreground-2 "#afafff")
           (foreground-3 "#94ccd1")
           (foreground-4 "#7dcc96")
           (foreground-5 "#d1af93")
