@@ -836,6 +836,48 @@
      (compilation-mode-line-fail
       :foreground emph-6)
 
+     ;; ediff
+     (ediff-even-diff-A
+      :foreground foreground-2)
+     (ediff-even-diff-Ancestor
+      :foreground foreground-5)
+     (ediff-even-diff-B
+      :foreground foreground-3)
+     (ediff-even-diff-C
+      :foreground foreground-7)
+     (ediff-current-diff-A
+      :inherit ediff-even-diff-A
+      :background background-3)
+     (ediff-current-diff-Ancestor
+      :inherit ediff-even-diff-Ancestor
+      :background background-3)
+     (ediff-current-diff-B
+      :inherit ediff-even-diff-B
+      :background background-3)
+     (ediff-current-diff-C
+      :inherit ediff-even-diff-C
+      :background background-3)
+     (ediff-fine-diff-A
+      :inherit ediff-even-diff-A
+      :background background-2)
+     (ediff-fine-diff-Ancestor
+      :inherit ediff-even-diff-Ancestor
+      :background background-2)
+     (ediff-fine-diff-B
+      :inherit ediff-even-diff-B
+      :background background-2)
+     (ediff-fine-diff-C
+      :inherit ediff-even-diff-C
+      :background background-2)
+     (ediff-odd-diff-A
+      :inherit ediff-even-diff-A)
+     (ediff-odd-diff-Ancestor
+      :inherit ediff-even-diff-Ancestor)
+     (ediff-odd-diff-B
+      :inherit ediff-even-diff-B)
+     (ediff-odd-diff-C
+      :inherit ediff-even-diff-C)
+
      ;; ghc
      (ghc-face-error
       :foreground emph-6)
