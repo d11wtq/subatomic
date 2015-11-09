@@ -194,7 +194,7 @@
      (fringe
       :background background-2)
      (cursor
-      :background emph-7)
+      :background "cyan")
      (secondary-selection
       :background emph-4)
      (vertical-border
@@ -289,7 +289,7 @@
      (diff-refine-added
       :inherit diff-added
       :background background-3)
-     (diff-refine-change
+     (diff-refine-changed
       :inherit diff-changed
       :background background-3)
      (diff-refine-removed
