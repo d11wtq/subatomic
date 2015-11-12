@@ -194,7 +194,7 @@
      (fringe
       :background background-2)
      (cursor
-      :background "cyan")
+      :background foreground-7)
      (secondary-selection
       :background emph-4)
      (vertical-border
