@@ -519,7 +519,7 @@
       :foreground emph-2)
      (magit-cherry-equivalent
       :foreground emph-7)
-     (magit-section-hilight
+     (magit-section-highlight
       :background background-2)
      (magit-section-heading
       :foreground emph-5)
