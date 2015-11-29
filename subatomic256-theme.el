@@ -614,6 +614,10 @@
       :foreground emph-3)
      (magit-diffstat-removed
       :foreground emph-6)
+     (magit-popup-argument
+      :foreground emph-3)
+     (magit-popup-disabled-argument
+      :foreground emph-6)
 
      ;; markdown-mode
      (markdown-italic-face
@@ -888,12 +892,16 @@
 
      ;; ido-mode
      (ido-indicator
-      :background background-2
+      :background background-3
       :foreground emph-6)
+     (ido-first-match
+      :foreground emph-7)
      (ido-only-match
-      :foreground emph-5)
+      :foreground emph-3)
      (ido-subdir
       :foreground emph-2)
+     (ido-virtual
+      :foreground emph-4)
 
      ;; message
      (message-cited-text
