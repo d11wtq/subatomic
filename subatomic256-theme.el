@@ -890,6 +890,18 @@
      (ghc-face-warn
       :foreground emph-5)
 
+     ;; hydra
+     (hydra-face-amaranth
+      :foreground emph-5)
+     (hydra-face-blue
+      :foreground emph-1)
+     (hydra-face-pink
+      :foreground emph-7)
+     (hydra-face-red
+      :foreground emph-6)
+     (hydra-face-teal
+      :foreground emph-2)
+
      ;; ido-mode
      (ido-indicator
       :background background-3
