@@ -902,7 +902,47 @@
      (hydra-face-teal
       :foreground emph-2)
 
+     ;; haskell
+     (haskell-constructor-face
+      :foreground emph-2)
+     (haskell-keyword-face
+      :foreground emph-7)
+     (haskell-literate-comment-face
+      :foreground foreground-7)
+     (haskell-operator-face
+      :foreground foreground-5)
+     (haskell-pragma-face
+      :foreground emph-5)
+     (haskell-definition-face
+      :foreground emph-1)
+     ;; (haskell-debug-heading-face
+     ;;  :foreground)
+     ;; (haskell-debug-keybinding-face
+     ;;  :foreground)
+     ;; (haskell-debug-muted-face
+     ;;  :foreground)
+     ;; (haskell-debug-warning-face
+     ;;  :foreground)
+     ;; (haskell-debug-newline-face
+     ;;  :foreground)
+     ;; (haskell-debug-trace-number-face
+     ;;  :foreground)
+     ;; (haskell-indentation-show-hl-line-face
+     ;;  :foreground)
+     ;; (haskell-indentation-show-normal-face
+     ;;  :foreground)
+     ;; (haskell-interactive-face-compile-error
+     ;;  :foreground)
+     ;; (haskell-interactive-face-compile-warning
+     ;;  :foreground)
+     ;; (haskell-interactive-face-garbage
+     ;;  :foreground)
+     ;; (haskell-interactive-face-prompt
+     ;;  :foreground)
+     ;; (haskell-interactive-face-result
+     ;;  :foreground)
      ;; ido-mode
+
      (ido-indicator
       :background background-3
       :foreground emph-6)
