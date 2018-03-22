@@ -370,6 +370,20 @@
      (diredp-ignored-file-name
       :foreground foreground-3)
 
+     ;; epa
+     (epa-mark
+      :foreground emph-4)
+     (epa-string
+      :foregraund foreground-1)
+     (epa-validity-disabled
+      :inherit font-lock-warning-face)
+     (epa-validity-high
+      :foreground foreground-4)
+     (epa-validity-medium
+      :foreground foreground-3)
+     (epa-validity-low
+      :foreground foreground-5)
+
      ;; erc
      (erc-default-face
       :inherit default)
@@ -467,6 +481,44 @@
       :underline full-red)
      (flymake-warnline
       :underline full-yellow)
+
+     ;; gnus
+     (gnus-group-mail-1-empty
+      :foreground foreground-1)
+     (gnus-group-mail-2-empty
+      :foreground foreground-1)
+     (gnus-group-mail-3-empty
+      :foreground foreground-1)
+     (gnus-group-mail-low-empty
+      :foreground foreground-1)
+     (gnus-group-news-1-empty
+      :foreground foreground-1)
+     (gnus-group-news-2-empty
+      :foreground foreground-1)
+     (gnus-group-news-3-empty
+      :foreground foreground-1)
+     (gnus-group-news-4-empty
+      :foreground foreground-1)
+     (gnus-group-news-5-empty
+      :foreground foreground-1)
+     (gnus-group-news-6-empty
+      :foreground foreground-1)
+     (gnus-group-news-low-empty
+      :foreground foreground-1)
+     (gnus-splash
+      :foreground foreground-1)
+     (gnus-summary-cancelled
+      :inherit font-lock-warning-face)
+     (gnus-summary-normal-ancient
+      :foreground foreground-5)
+     (gnus-summary-normal-read
+      :foreground foreground-3)
+     (gnus-summary-normal-ticked
+      :foreground emph-4)
+     (gnus-summary-normal-undownloaded
+      :foreground foreground-2)
+     (gnus-summary-normal-unread
+      :foreground foreground-4)
 
      ;; highlight-symbol
      (highlight-symbol-face
