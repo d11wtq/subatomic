@@ -210,10 +210,6 @@
       :foreground background-3)
      (region
       :background background-3 :foreground foreground-1)
-     (show-paren-match-face
-      :foreground full-green)
-     (show-paren-mismatch-face
-      :foreground full-red)
      (isearch
       :background background-3 :foreground full-green)
      (lazy-highlight
@@ -221,7 +217,10 @@
      (query-replace
       :inherit lazy-highlight)
      (trailing-whitespace
-      :inherit show-paren-mismatch-face :underline t)
+      (((supports :underline (:style line)))
+       :underline (:style line :color emph-6)
+       :background background-2)
+      (t :background background-3))
      (mode-line
       :foreground foreground-1 :weight bold :box (:line-width 1 :style released-button))
      (powerline-active1
@@ -250,13 +249,31 @@
       :inherit link
       :foreground emph-7)
      (highlight
-      :background foreground-7)
-     (success
-      :foreground emph-3)
+      :background background-3)
      (tool-bar
       :foreground foreground-2)
      (tooltip
       :background background-3)
+     (secondary-selection
+      :background background-3)
+     (success
+      :foreground emph-3)
+     (warning
+      (((supports :underline (:style line)))
+       :underline (:style line :color emph-5)
+       :foreground emph-5
+       :background background-2)
+      (t
+       :foreground emph-5
+       :background background-2))
+     (error
+      (((supports :underline (:style line)))
+       :underline (:style line :color emph-6)
+       :foreground emph-6
+       :background background-2)
+      (t
+       :foreground emph-6
+       :background background-2))
 
      ;; calendar
      (calendar-today-face
@@ -557,155 +574,6 @@
       :background background-2
       :foreground emph-3)
 
-     ;; magit
-     (magit-dimmed
-      :foreground foreground-2)
-     (magit-hash
-      :foreground emph-4)
-     (magit-tag
-      :inherit magit-hash)
-     (magit-branch-remote
-      :foreground emph-1)
-     (magit-branch-local
-      :foreground emph-2)
-     (magit-refname
-      :foreground emph-7)
-     (magit-signature-good
-      :foreground emph-3)
-     (magit-signature-bad
-      :foreground emph-6)
-     (magit-signature-untrusted
-      :foreground emph-2)
-     (magit-cherry-unmatched
-      :foreground emph-2)
-     (magit-cherry-equivalent
-      :foreground emph-7)
-     (magit-section-highlight
-      :background background-2)
-     (magit-section-heading
-      :foreground emph-5)
-     (magit-section-heading-selection
-      :foreground emph-4)
-     (magit-log-graph
-      :foreground background-3)
-     (magit-log-author
-      :foreground foreground-4)
-     (magit-log-date
-      :foreground foreground-5)
-     (magit-reflog-commit
-      :foreground emph-3)
-     (magit-reflog-amend
-      :foreground emph-7)
-     (magit-reflog-merge
-      :foreground emph-3)
-     (magit-reflog-checkout
-      :foreground emph-1)
-     (magit-reflog-reset
-      :foreground emph-6)
-     (magit-reflog-rebase
-      :foreground emph-7)
-     (magit-reflog-cherry-pick
-      :foreground emph-3)
-     (magit-reflog-remote
-      :foreground emph-2)
-     (magit-reflog-other
-      :foreground emph-2)
-     (magit-blame-heading
-      :background background-2)
-     (magit-sequence-stop
-      :foreground emph-3)
-     (magit-sequence-part
-      :foreground emph-4)
-     (magit-sequence-head
-      :foreground emph-2)
-     (magit-sequence-drop
-      :foreground emph-6)
-     (git-rebase-hash
-      :background background-2)
-     (magit-bisect-good
-      :foreground emph-3)
-     (magit-bisect-skip
-      :foreground emph-4)
-     (magit-bisect-bad
-      :foreground emph-6)
-     (magit-process-ok
-      :foreground emph-3)
-     (magit-process-ng
-      :foreground emph-6)
-     (magit-diff-file-heading
-      :background background-2
-      :foreground emph-4)
-     (magit-diff-file-heading-selection
-      :inherit magit-diff-file-heading-highlight
-      :foreground emph-4)
-     (magit-diff-hunk-heading
-      :background background-2
-      :foreground emph-1)
-     (magit-diff-hunk-heading-highlight
-      :inherit magit-diff-hunk-heading
-      :background background-3)
-     (magit-diff-hunk-heading-selection
-      :inherit magit-diff-hunk-heading-highlight :foreground emph-4)
-     (magit-diff-lines-heading
-      :inherit magit-diff-hunk-heading-highlight :foreground emph-3)
-     (magit-diff-added
-      :background background-2
-      :foreground foreground-4)
-     (magit-diff-removed
-      :background background-2
-      :foreground foreground-6)
-     (magit-diff-base
-      :background background-2
-      :foreground foreground-5)
-     (magit-diff-context
-      :foreground foreground-2)
-     (magit-diff-added-highlight
-      :inherit magit-diff-added
-      :background background-3)
-     (magit-diff-removed-highlight
-      :inherit magit-diff-removed
-      :background background-3)
-     (magit-diff-base-highlight
-      :inherit magit-diff-base
-      :background background-3)
-     (magit-diff-context-highlight
-      :background background-1
-      :foreground foreground-2)
-     (magit-diffstat-added
-      :foreground emph-3)
-     (magit-diffstat-removed
-      :foreground emph-6)
-     (magit-popup-argument
-      :foreground emph-3)
-     (magit-popup-disabled-argument
-      :foreground emph-6)
-
-     ;; markdown-mode
-     (markdown-italic-face
-      :foreground emph-2 :slant italic)
-     (markdown-bold-face
-      :foreground emph-2 :weight bold)
-     (markdown-strike-through-face
-      :foreground emph-2 :strike-through t)
-     (markdown-markup-face
-      :foreground foreground-2)
-     (markdown-header-face
-      :foreground emph-1)
-     (markdown-header-delimiter-face
-      :inherit markdown-header-face)
-     (markdown-metadata-key-face
-      :foreground foreground-3)
-     (markdown-metadata-value-face
-      :foreground foreground-4)
-     (markdown-link-face
-      :inherit markdown-markup-face)
-     (markdown-pre-face
-      :foreground foreground-7)
-     (markdown-url-face
-      :foreground foreground-3)
-     (markdown-highlight-face
-      :inherit highlight)
-
      ;; outline
      (outline-1
       :foreground emph-2 :weight bold)
@@ -943,67 +811,7 @@
      (ediff-odd-diff-C
       :inherit ediff-even-diff-C)
 
-     ;; ghc
-     (ghc-face-error
-      :foreground emph-6)
-     (ghc-face-hole
-      :foreground emph-4)
-     (ghc-face-warn
-      :foreground emph-5)
-
-     ;; hydra
-     (hydra-face-amaranth
-      :foreground emph-5)
-     (hydra-face-blue
-      :foreground emph-1)
-     (hydra-face-pink
-      :foreground emph-7)
-     (hydra-face-red
-      :foreground emph-6)
-     (hydra-face-teal
-      :foreground emph-2)
-
-     ;; haskell
-     (haskell-constructor-face
-      :foreground emph-2)
-     (haskell-keyword-face
-      :foreground emph-7)
-     (haskell-literate-comment-face
-      :foreground foreground-7)
-     (haskell-operator-face
-      :foreground foreground-5)
-     (haskell-pragma-face
-      :foreground emph-5)
-     (haskell-definition-face
-      :foreground emph-1)
-     ;; (haskell-debug-heading-face
-     ;;  :foreground)
-     ;; (haskell-debug-keybinding-face
-     ;;  :foreground)
-     ;; (haskell-debug-muted-face
-     ;;  :foreground)
-     ;; (haskell-debug-warning-face
-     ;;  :foreground)
-     ;; (haskell-debug-newline-face
-     ;;  :foreground)
-     ;; (haskell-debug-trace-number-face
-     ;;  :foreground)
-     ;; (haskell-indentation-show-hl-line-face
-     ;;  :foreground)
-     ;; (haskell-indentation-show-normal-face
-     ;;  :foreground)
-     ;; (haskell-interactive-face-compile-error
-     ;;  :foreground)
-     ;; (haskell-interactive-face-compile-warning
-     ;;  :foreground)
-     ;; (haskell-interactive-face-garbage
-     ;;  :foreground)
-     ;; (haskell-interactive-face-prompt
-     ;;  :foreground)
-     ;; (haskell-interactive-face-result
-     ;;  :foreground)
      ;; ido-mode
-
      (ido-indicator
       :background background-3
       :foreground emph-6)
@@ -1040,6 +848,7 @@
      (mm-command-output
       :foreground emph-6)
 
+     ;; show-paren
      (show-paren-mismatch-face
       :foreground emph-6)
      (show-paren-match-face
@@ -1049,6 +858,7 @@
      (show-paren-mismatch
       :background emph-7)
 
+     ;; speedbar
      (speedbar-button-face
       :foreground emph-3)
      (speedbar-directory-face
@@ -1064,18 +874,27 @@
       :foreground emph-6)
 
      ;; whitespace
+     (whitespace-big-indent
+      :foreground emph-5
+      :background background-3)
      (whitespace-empty
-      :foreground emph-6
-      :background emph-4)
+      :foreground emph-2
+      :background background-2)
      (whitespace-hspace
-      :foreground emph-6
-      :background foreground-7)
+      :foreground emph-1
+      :background background-2)
      (whitespace-indentation
       :inherit whitespace-empty)
+     (whitespace-line
+      :foreground foreground-6
+      :background background-3)
+     (whitespace-newline
+      :foreground foreground-2
+      :background background-1)
      (whitespace-space
       :inherit whitespace-hspace)
      (whitespace-space-after-tab
-      :inherit whitespace-empty)
+      :inherit whitespace-space-before-tab)
      (whitespace-space-before-tab
       :background emph-5
       :foreground emph-4)
@@ -1085,6 +904,7 @@
       :background emph-6
       :foreground emph-4)
 
+     ;; widgets
      (widget-button-pressed
       :foreground emph-6)
      (widget-documentation
@@ -1093,6 +913,235 @@
       :background background-3)
      (widget-single-line-field
       :background background-2)
+
+
+     ;; external packages
+
+     ;; magit
+     (magit-dimmed
+      :foreground foreground-2)
+     (magit-hash
+      :foreground emph-4)
+     (magit-tag
+      :inherit magit-hash)
+     (magit-branch-remote
+      :foreground emph-1)
+     (magit-branch-local
+      :foreground emph-2)
+     (magit-refname
+      :foreground emph-7)
+     (magit-signature-good
+      :foreground emph-3)
+     (magit-signature-bad
+      :foreground emph-6)
+     (magit-signature-untrusted
+      :foreground emph-2)
+     (magit-cherry-unmatched
+      :foreground emph-2)
+     (magit-cherry-equivalent
+      :foreground emph-7)
+     (magit-section-highlight
+      :background background-2)
+     (magit-section-heading
+      :foreground emph-5)
+     (magit-section-heading-selection
+      :foreground emph-4)
+     (magit-log-graph
+      :foreground background-3)
+     (magit-log-author
+      :foreground foreground-4)
+     (magit-log-date
+      :foreground foreground-5)
+     (magit-reflog-commit
+      :foreground emph-3)
+     (magit-reflog-amend
+      :foreground emph-7)
+     (magit-reflog-merge
+      :foreground emph-3)
+     (magit-reflog-checkout
+      :foreground emph-1)
+     (magit-reflog-reset
+      :foreground emph-6)
+     (magit-reflog-rebase
+      :foreground emph-7)
+     (magit-reflog-cherry-pick
+      :foreground emph-3)
+     (magit-reflog-remote
+      :foreground emph-2)
+     (magit-reflog-other
+      :foreground emph-2)
+     (magit-blame-heading
+      :background background-2)
+     (magit-sequence-stop
+      :foreground emph-3)
+     (magit-sequence-part
+      :foreground emph-4)
+     (magit-sequence-head
+      :foreground emph-2)
+     (magit-sequence-drop
+      :foreground emph-6)
+     (git-rebase-hash
+      :background background-2)
+     (magit-bisect-good
+      :foreground emph-3)
+     (magit-bisect-skip
+      :foreground emph-4)
+     (magit-bisect-bad
+      :foreground emph-6)
+     (magit-process-ok
+      :foreground emph-3)
+     (magit-process-ng
+      :foreground emph-6)
+     (magit-diff-file-heading
+      :background background-2
+      :foreground emph-4)
+     (magit-diff-file-heading-selection
+      :inherit magit-diff-file-heading-highlight
+      :foreground emph-4)
+     (magit-diff-hunk-heading
+      :background background-2
+      :foreground emph-1)
+     (magit-diff-hunk-heading-highlight
+      :inherit magit-diff-hunk-heading
+      :background background-3)
+     (magit-diff-hunk-heading-selection
+      :inherit magit-diff-hunk-heading-highlight :foreground emph-4)
+     (magit-diff-lines-heading
+      :inherit magit-diff-hunk-heading-highlight :foreground emph-3)
+     (magit-diff-added
+      :background background-2
+      :foreground foreground-4)
+     (magit-diff-removed
+      :background background-2
+      :foreground foreground-6)
+     (magit-diff-base
+      :background background-2
+      :foreground foreground-5)
+     (magit-diff-context
+      :foreground foreground-2)
+     (magit-diff-added-highlight
+      :inherit magit-diff-added
+      :background background-3)
+     (magit-diff-removed-highlight
+      :inherit magit-diff-removed
+      :background background-3)
+     (magit-diff-base-highlight
+      :inherit magit-diff-base
+      :background background-3)
+     (magit-diff-context-highlight
+      :background background-1
+      :foreground foreground-2)
+     (magit-diffstat-added
+      :foreground emph-3)
+     (magit-diffstat-removed
+      :foreground emph-6)
+     (magit-popup-argument
+      :foreground emph-3)
+     (magit-popup-disabled-argument
+      :foreground emph-6)
+
+     ;; markdown-mode
+     (markdown-italic-face
+      :foreground emph-2 :slant italic)
+     (markdown-bold-face
+      :foreground emph-2 :weight bold)
+     (markdown-strike-through-face
+      :foreground emph-2 :strike-through t)
+     (markdown-markup-face
+      :foreground foreground-2)
+     (markdown-header-face
+      :foreground emph-1)
+     (markdown-header-delimiter-face
+      :inherit markdown-header-face)
+     (markdown-metadata-key-face
+      :foreground foreground-3)
+     (markdown-metadata-value-face
+      :foreground foreground-4)
+     (markdown-link-face
+      :inherit markdown-markup-face)
+     (markdown-pre-face
+      :foreground foreground-7)
+     (markdown-url-face
+      :foreground foreground-3)
+     (markdown-highlight-face
+      :inherit highlight)
+
+     ;; ghc
+     (ghc-face-error
+      :foreground emph-6)
+     (ghc-face-hole
+      :foreground emph-4)
+     (ghc-face-warn
+      :foreground emph-5)
+
+     ;; hydra
+     (hydra-face-amaranth
+      :foreground emph-5)
+     (hydra-face-blue
+      :foreground emph-1)
+     (hydra-face-pink
+      :foreground emph-7)
+     (hydra-face-red
+      :foreground emph-6)
+     (hydra-face-teal
+      :foreground emph-2)
+
+     ;; haskell
+     (haskell-constructor-face
+      :foreground emph-2)
+     (haskell-keyword-face
+      :foreground emph-7)
+     (haskell-literate-comment-face
+      :foreground foreground-7)
+     (haskell-operator-face
+      :foreground foreground-5)
+     (haskell-pragma-face
+      :foreground emph-5)
+     ;; (haskell-debug-heading-face
+     ;;  :foreground)
+     ;; (haskell-debug-keybinding-face
+     ;;  :foreground)
+     (haskell-debug-muted-face
+      :foreground foreground-2)
+     (haskell-debug-warning-face
+      :foreground emph-5)
+     (haskell-debug-newline-face
+      :background background-3)
+     (haskell-debug-trace-number-face
+      :background background-3)
+     (haskell-definition-face
+      :foreground emph-1)
+
+     (haskell-error-face
+      (((supports :underline (:style line)))
+       :underline (:style line :color emph-6)
+       :background background-2)
+      (t :inherit error))
+
+     (haskell-hole-face
+      (((supports :underline (:style line)))
+       :underline (:style line :color emph-1)
+       :background background-2)
+      (t
+       :foreground emph-2
+       :background background-3))
+
+     ;; (haskell-indentation-show-hl-line-face
+     ;;  :foreground)
+     ;; (haskell-indentation-show-normal-face
+     ;;  :foreground)
+     ;; (haskell-interactive-face-compile-error
+     ;;  :foreground)
+     ;; (haskell-interactive-face-compile-warning
+     ;;  :foreground)
+     ;; (haskell-interactive-face-garbage
+     ;;  :foreground)
+     ;; (haskell-interactive-face-prompt
+     ;;  :foreground)
+     ;; (haskell-interactive-face-result
+     ;;  :foreground)
+
+
      ))
   (subatomic256-set-faces subatomic256-faces))
 
