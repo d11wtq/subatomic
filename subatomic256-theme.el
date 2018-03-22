@@ -43,38 +43,47 @@
 (defun subatomic256--get-colour (symbol)
   (cadr (assq symbol subatomic256-palette)))
 
-(defun subatomic256--resolve-vars (list)
-  (cond
-   ((not list) nil)
-   ((listp (car list))
-    (cons (subatomic256--resolve-vars (car list))
-          (subatomic256--resolve-vars (cdr list))))
-   ((or (-contains-p '(:foreground :background) (car list))
-        (and (eq ':underline (car list))
-             (not (-contains-p '(t nil) (cadr list)))))
-    (let ((colour (subatomic256--get-colour (cadr list))))
-      (unless colour
-        (message "Invalid colour %s" (cadr list)))
-      `(,(car list) ,colour ,@(subatomic256--resolve-vars (cddr list)))))
-   (t
-    (cons (car list) (subatomic256--resolve-vars (cdr list))))))
+(defun subatomic256--resolve-vars (datum)
+  (letf (((symbol-function 'resolve-colour)
+          (lambda ()
+            (let ((colour (subatomic256--get-colour (cadr datum))))
+              (unless colour
+                (message "Invalid colour %s" (cadr datum)))
+              `(,(car datum) ,colour ,@(subatomic256--resolve-vars (cddr datum)))))))
+    (cond
+     ((not datum) nil)
+     ((listp (car datum))
+      `(,(subatomic256--resolve-vars (car datum)) ,@(subatomic256--resolve-vars (cdr datum))))
+     ((-contains-p '(:foreground :background :color) (car datum))
+      (resolve-colour))
+     ((eq ':underline (car datum))
+      (cond
+       ((-contains-p '(nil t) (cadr datum))
+        `(,(car datum) ,(cadr datum) ,@(subatomic256--resolve-vars (cddr datum))))
+       ((listp (cadr datum))
+        `(,(car datum) ,(subatomic256--resolve-vars (cadr datum)) ,@(subatomic256--resolve-vars (cddr datum))))
+       (t
+        (resolve-colour))))
+     (t
+      `(,(car datum) ,@(subatomic256--resolve-vars (cdr datum)))))))
 
-
-(defun subatomic256--resolve-faces ()
+(defun subatomic256--resolve-faces (faces)
   (-map
    (lambda (cons)
      (let ((face (car cons))
-           (spec (cdr cons)))
-       `(quote (,face
-                ((t ,(subatomic256--resolve-vars spec)))
-                t))
-       ))
-   subatomic256-faces))
+           (spec (subatomic256--resolve-vars (cdr cons))))
+       (cond
+         ((listp (car spec))
+          `(quote (,face ,spec)))
+         (t
+          `(quote (,face
+                   ((t ,spec))))))))
+   faces))
 
-(defun subatomic256-set-faces ()
+(defun subatomic256-set-faces (faces)
   (eval `(custom-theme-set-faces
           'subatomic256
-          ,@(subatomic256--resolve-faces))))
+          ,@(subatomic256--resolve-faces faces))))
 
 (defun subatomic256-colour-string (r g b)
   (format "#%02x%02x%02x" r g b))
@@ -1033,7 +1042,7 @@
      (widget-single-line-field
       :background background-2)
      ))
-  (subatomic256-set-faces))
+  (subatomic256-set-faces subatomic256-faces))
 
 ;;;###autoload
 (when load-file-name
