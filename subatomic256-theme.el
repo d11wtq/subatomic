@@ -878,19 +878,17 @@
       :foreground emph-5
       :background background-3)
      (whitespace-empty
-      :foreground emph-2
-      :background background-2)
+      :inherit whitespace-trailing)
      (whitespace-hspace
       :foreground emph-1
-      :background background-2)
+      :background background-1)
      (whitespace-indentation
-      :inherit whitespace-empty)
+      :inherit whitespace-hspace)
      (whitespace-line
       :foreground foreground-6
       :background background-3)
      (whitespace-newline
-      :foreground foreground-2
-      :background background-1)
+      :inherit whitespace-hspace)
      (whitespace-space
       :inherit whitespace-hspace)
      (whitespace-space-after-tab
